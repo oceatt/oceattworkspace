@@ -1,11 +1,10 @@
 # Steps to check if the Minishift Platform is running
 1. Try to access the Minishift URL
-	https://192.168.99.100:8443/console/
 
-2. Credentials to be used : 
-	developer/developer
+		https://192.168.99.100:8443/console/
+		Credentials to be used : developer/developer
 
-3. If the above URL is not accessible, then we need to start the Minishift VM
+2. If the above URL is not accessible, then we need to start the Minishift VM
 	
 		Go inside the minishift installation
 			cd C:\Users\pg939j\minishift
