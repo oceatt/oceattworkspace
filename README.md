@@ -1,4 +1,4 @@
-#Steps to check if the Minishift Platform is running
+# Steps to check if the Minishift Platform is running
 1. Try to access the Minishift URL
 	https://192.168.99.100:8443/console/
 
@@ -18,6 +18,7 @@
 
 # Steps to Create a new module
 1. Create a new workspace in you local C drive or use an existing workspace if already present.
+	
 	mkdir newWorkspace
 
 2. Create a new module from the Archetype : Give the -DgroupId and -DartifactId parameter 
@@ -31,6 +32,7 @@
 		DartifactId - Refers to the Module name of the new project to be created
 
 3. Commit this new module to the git hub repository
+	
 	git add <moduleName>
 	git commit -m "initial commit"
 	git remote add origin https://github.com/oceatt/oceattworkspace.git
@@ -39,6 +41,7 @@
 
 
 4. Now Create a new ci project in mini shift
+	
 	oc login 192.168.99.100:8443 -u developer -p developer
 	oc new-project <ciProjectName>
 	
@@ -47,6 +50,7 @@
 	eg : oc new-project springbootci
 
 5. Give permission to this project. This is required to do the pipeline build. 
+	
 	oc login -u system:admin
 	oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:<ciProjectName>:jenkins -n <ciProjectName>
 	
@@ -54,6 +58,7 @@
 
 
 6. Run the OC Create command to create the pipleline. This should be the raw url from Github repository
+	
 	Login to the minishift as developer user
 		oc login 192.168.99.100:8443 -u developer -p developer
 	
