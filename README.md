@@ -6,14 +6,18 @@
 	developer/developer
 
 3. If the above URL is not accessible, then we need to start the Minishift VM
-	Go inside the minishift installation
-		cd C:\Users\pg939j\minishift
-	Start the minishift
-		minishift start --vm-driver=virtualbox --memory=4096
-	Check the status from the command line
-		minishift status
-	Try to access the URL again
-		https://192.168.99.100:8443/console/
+	
+		Go inside the minishift installation
+			cd C:\Users\pg939j\minishift
+
+		Start the minishift
+			minishift start --vm-driver=virtualbox --memory=4096
+
+		Check the status from the command line
+			minishift status
+
+		Try to access the URL again
+			https://192.168.99.100:8443/console/
 
 
 # Steps to Create a new module
