@@ -60,17 +60,20 @@
 6. Run the OC Create command to create the pipleline. This should be the raw url from Github repository
 	
 	Login to the minishift as developer user
+		
 		oc login 192.168.99.100:8443 -u developer -p developer
 	
 	Go inside the newly created CI Project in step 4
+		
 		oc project <ciProjectName>
 	
 	Create the Pipeline build by using the Pipeline.yml file generated using the Archtype
-		oc create -f <RawgitURL for pipeline.yml>
 		
+		oc create -f <RawgitURL for pipeline.yml>
 		eg : oc create -f https://raw.githubusercontent.com/oceatt/oceattworkspace/master/testocenew/pipeline.yml
 		
 	To generate the raw GitURL for pipeline.yml
+		
 		Go inside the git hub repository https://github.com/oceatt/oceattworkspace
 		Go inside the newly created project in step 2
 		Open the pipeline.yml file
@@ -80,6 +83,7 @@
 		
 
 7. Goto the Openshift console and go inside the pipeline project
+
 	https://192.168.99.100:8443/console/
 	Credentials : developer/developer
 
@@ -88,9 +92,11 @@
 9. Start the newly created Pipeline project and monitor the build progress in Jenkins by clicking on view log in the pipeline page
 
 10 Once the build is complete, open the actual project from the Projects list in the Openshift console
+	
 	eg : https://192.168.99.100:8443/console/project/helloworld-msa/overview
 	
 11 On the overview page, click on the Test URL given for the deployment
+	
 	eg : http://aloha-helloworld-msa.192.168.99.100.nip.io/
 	
 	
@@ -100,4 +106,5 @@
 2. Select the option Existing Maven Projects
 
 3. Give the complete local path of the module created
+	
 	eg : C:/newWorkspace/newProject
