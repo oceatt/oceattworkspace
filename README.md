@@ -26,7 +26,7 @@
 
 2. Create a new module from the Archetype : Give the -DgroupId and -DartifactId parameter 
 	
-	mvn archetype:generate  -DarchetypeGroupId=com.att.oce -DarchetypeArtifactId=oce-minishift-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=com.att.oce -DartifactId=testocenewproject
+		mvn archetype:generate  -DarchetypeGroupId=com.att.oce -DarchetypeArtifactId=oce-minishift-archetype -DarchetypeVersion=1.0-SNAPSHOT -DgroupId=com.att.oce -DartifactId=testocenewproject
 		
 		DarchetypeGroupId - Refers to the Group Id of the Archetype project . This will always remain constant.
 		DarchetypeArtifactId - Refers to the Artifact Id of the Archetype project . This will always remain constant.
@@ -36,44 +36,44 @@
 
 3. Commit this new module to the git hub repository
 	
-	git add <moduleName>
-	git commit -m "initial commit"
-	git remote add origin https://github.com/oceatt/oceattworkspace.git
-	git pull https://github.com/oceatt/oceattworkspace.git master --allow-unrelated-histories
-	git push -u origin master
+		git add <moduleName>
+		git commit -m "initial commit"
+		git remote add origin https://github.com/oceatt/oceattworkspace.git
+		git pull https://github.com/oceatt/oceattworkspace.git master --allow-unrelated-histories
+		git push -u origin master
 
 
 4. Now Create a new ci project in mini shift
 	
-	oc login 192.168.99.100:8443 -u developer -p developer
-	oc new-project <ciProjectName>
-	
-	ciProjectName - Refers to the new CI Project that needs to be created in minishift. Each project needs to have an individual CI project also in minishift to configure the pipeline builds
-	
-	eg : oc new-project springbootci
+		oc login 192.168.99.100:8443 -u developer -p developer
+		oc new-project <ciProjectName>
+
+		ciProjectName - Refers to the new CI Project that needs to be created in minishift. Each project needs to have an individual CI project also in minishift to configure the pipeline builds
+
+		eg : oc new-project springbootci
 
 5. Give permission to this project. This is required to do the pipeline build. 
 	
-	oc login -u system:admin
-	oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:<ciProjectName>:jenkins -n <ciProjectName>
-	
-	ciProjectName - Refers to the new project created in Minishift in step 4
+		oc login -u system:admin
+		oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:<ciProjectName>:jenkins -n <ciProjectName>
+
+		ciProjectName - Refers to the new project created in Minishift in step 4
 
 
 6. Run the OC Create command to create the pipleline. This should be the raw url from Github repository
 	
-	Login to the minishift as developer user
-		
-		oc login 192.168.99.100:8443 -u developer -p developer
-	
-	Go inside the newly created CI Project in step 4
-		
-		oc project <ciProjectName>
-	
-	Create the Pipeline build by using the Pipeline.yml file generated using the Archtype
-		
-		oc create -f <RawgitURL for pipeline.yml>
-		eg : oc create -f https://raw.githubusercontent.com/oceatt/oceattworkspace/master/testocenew/pipeline.yml
+		Login to the minishift as developer user
+
+			oc login 192.168.99.100:8443 -u developer -p developer
+
+		Go inside the newly created CI Project in step 4
+
+			oc project <ciProjectName>
+
+		Create the Pipeline build by using the Pipeline.yml file generated using the Archtype
+
+			oc create -f <RawgitURL for pipeline.yml>
+			eg : oc create -f https://raw.githubusercontent.com/oceatt/oceattworkspace/master/testocenew/pipeline.yml
 		
 	To generate the raw GitURL for pipeline.yml
 		
