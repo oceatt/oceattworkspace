@@ -36,6 +36,7 @@
 
 3. Commit this new module to the git hub repository
 	
+		git init
 		git add <moduleName>
 		git commit -m "initial commit"
 		git remote add origin https://github.com/oceatt/oceattworkspace.git
