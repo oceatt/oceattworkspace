@@ -1,3 +1,12 @@
+# Softwares required
+
+		JDK 8
+		Maven
+		Tortoise Git client
+		Eclipse Kepler
+		Oracle VirtualBox
+		Minishift
+
 # Steps to check if the Minishift Platform is running
 1. Try to access the Minishift URL
 
