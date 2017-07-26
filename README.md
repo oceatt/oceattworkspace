@@ -44,7 +44,7 @@
 		git push -u origin master
 
 
-4. Now Create a new ci project in mini shift
+4. Now Create a new ci project in mini shift. Or if already a CI Project is present, we can reuse the same.
 	
 		oc login 192.168.99.100:8443 -u developer -p developer
 		oc new-project <ciProjectName>
@@ -54,7 +54,8 @@
 		eg : oc new-project springbootci
 
 5. Give permission to this project. This is required to do the pipeline build. 
-	
+		
+		**Change the <ciProjectName> value with the actual CI project create on step 4**
 		oc login -u system:admin
 		oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:<ciProjectName>:jenkins -n <ciProjectName>
 
