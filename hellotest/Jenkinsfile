@@ -28,23 +28,9 @@ podTemplate(
 	            echo "This is the build number: ${env.BUILD_NUMBER}"
 	        }
 	    
-	        stage ('Automated tests'){
-	            echo 'This stage simulates automated tests'
-	            sh "mvn -B -Dmaven.test.failure.ignore verify"
-	        }
-	    
-	        stage ('QA - Promote image'){
-	            echo 'Deploying to QA'
-	            promoteImage('hellotest-dev', 'hellotest-qa', 'hellotest', 'latest')
-	        }
-	    
-	        stage ('Wait for approval'){
-	            input 'Approve to production?'
-	        }
-	    
 	        stage ('PRD - Promote image'){
 	            echo 'Deploying to production'
-	            promoteImage('hellotest-qa', 'hellotest', 'hellotest', env.BUILD_NUMBER)
+	            promoteImage('hellotest-dev', 'hellotest', 'hellotest', env.BUILD_NUMBER)
 	        }
 	
 	        stage ('PRD - Canary Deploy'){
